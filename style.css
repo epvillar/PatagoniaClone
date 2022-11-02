@@ -1,0 +1,746 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+
+:root {
+    --overlay-color:#03a9f4;/*azul*/
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    width: 100%;
+    margin: auto;
+}
+
+.showcase {
+    position:relative;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111; /*black*/
+    color: #fff; /*white*/
+    z-index: 2;
+    transition: 0.5s; /*esto es para el toggle*/
+    margin-bottom: 3rem;
+}
+/*con active corremos showcase 300px*/
+.showcase.active {
+    right: 300px;
+
+}
+.showcase header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+	/*la img que sigue es la de hamburger*/
+    background-image: url("https://th.bing.com/th/id/OIP.BlEuxufUCGHlWohB4oPGKQHaHa?w=186&h=185&c=7&o=5&pid=1.7");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    cursor: pointer;
+}
+.toggle.active {
+    /*si se deja un espacio se busca un elemento inside class toggle con una class active
+    si no se deja un espacio se busca un elemento class active en toogle
+	La img que sigue es la img de cerrado
+	*/
+    background-image: url("https://th.bing.com/th/id/OIP.OWQFgNIvMqUSJGDeUvdGvAHaHa?w=185&h=185&c=7&o=5&pid=1.7");
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: center;
+}
+.showcase video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .8;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;	
+    background: var(--overlay-color);	
+    mix-blend-mode: overlay;
+}
+/*si no le pone el mix-blend-overlay el background color tapa todo, con esto el
+ overlay se blend y se ve
+esto está en el video en 18:20, muestra otra manera de hacerlo con rgba usa un color negro y opacity, pone:
+background: rgba(0, 0, 0, .8);
+*/
+
+.text {
+    position: relative;
+    z-index: 10;
+}
+.text h2 {
+    font-size: 3em;
+    font-weight: 800;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+.text h3 {
+    font-size: 4em;
+    font-weight: 700;
+    line-height: 1em;
+    /*txt-transform: uppercase;*/
+}
+.text p {
+    font-size: 1.1rem;
+    color: white;
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 700px;
+}
+.text a {
+    display: inline-block;
+    font-size: 1em;
+    background: #fff;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #111;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+.text a:hover {
+    letter-spacing: 6px;
+}
+/*social media icons*/
+.social {
+    position: absolute;
+    bottom: 40px;
+	z-index: 10;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social li {
+    list-style: none;
+}
+.social li a {
+    display: inline-block;
+    filter: invert(1);/*pasa de blue a yellow*/
+    margin-right: 20px;
+    transform: scale(.5);
+    transition: 0.5s;
+}
+.social li a:hover {
+    transform: scale(0.5) translateY(-100px);/*lo empuja para arriba*/
+}
+
+/*Menu*/
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu ul {
+    position: relative;
+    list-style: none;
+}
+.menu ul li a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #111;
+}
+.menu li:hover{
+    color: var(--overlay-color);
+    font-size: larger;
+}
+
+/*Container*/
+
+.container {
+    height: auto;
+    width: 100%;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: .05rem;
+}
+
+.section-title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: darkgreen;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    text-align: center;
+}
+
+.section-title span {
+    color: orange;
+    font-weight: 1000;
+}
+
+/*Services section */
+#services {
+    margin-bottom: 3rem;
+}
+#services .services {
+    position: relative;
+    top: 10rem;
+    left: 0;
+    flex-direction: column;
+    text-align: center;
+    margin: 3rem auto;
+    padding: 100px 0;
+}
+
+#services .service-top {
+    margin: 0 auto;
+}
+
+#services .service-top p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+}
+#services .service-top #btn-color {
+    margin-top: 1rem;
+    border-radius: 20%;
+    border-color: yellowgreen;
+    background: yellowgreen
+}
+
+#services .service-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+/*service item original*/
+#services .service-item {
+    flex-basis: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 2rem;
+    border: 3px solid yellowgreen;
+    border-radius: 10px;
+    position: relative; 
+    z-index: 1;
+}
+
+#services .service-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-image: linear-gradient(60deg, #3e472f 0%, #0cbd50 100%);
+    opacity: .5;
+    z-index: -1;
+}
+
+#services .service-item #caja {
+    width: 80vw;
+    height: auto;
+    position: relative;
+    height: 600px;
+
+}
+#services .service-item .caja img {
+    width: 100%;
+    object-fit: cover;
+}
+#services .service-item .texto{
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    font-size: 1rem;
+}
+#services .service-item .texto .titulo {
+    color: darkgreen;
+    letter-spacing: .5rem;
+    line-height: 1rem;
+}
+#services .service-item .texto h2 {
+    padding-top: 2rem;
+    color: rgb(8, 8, 8);
+}
+#services .service-item:hover .overlay {
+    color: rgb(8, 7, 7);
+}
+#services .service-item:hover .texto{
+    display: block;
+    
+}
+
+@media screen and (max-width: 800px) {
+    #services .service-item .texto h2 {
+        font-size: 1rem;
+        color: white;
+    }
+}
+/* End of services section */
+
+/*SHOWCASE */
+#showcase1 {
+    margin: auto;
+    margin-top: 15rem;
+    margin-bottom: 10rem;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase1 header {
+    display: grid;
+}
+
+#showcase1 header p {
+    text-align: center;
+}
+
+#showcase1 .showcase {
+    display: grid;
+    margin-top: 2rem;
+    width: 65%;
+    min-height: 100vh; 
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#showcase1 .showcase header {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase1 .service-top {
+    display: grid;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+#showcase1 .section-title h1 {
+    text-align: center;
+}
+#showcase1 .service-top p {
+    font-size: 2rem;  
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+    margin: auto;
+    margin-top: 3px;
+    margin-bottom: 3rem;
+}
+
+#showcase1 .showcase h2 {
+    text-align: center;
+}
+
+#showcase1 .showcase .text h2 {
+    font-size: 1.5rem;
+}
+
+#showcase1 .showcase .text p {
+    font-size: 1rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+}
+
+#showcase1 .showcase .video {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#showcase1 .showcase .video iframe {
+    width: 60vw;
+    height: 80vh;
+}
+
+#showcase1 .showcase a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10%;
+    margin: auto;
+    margin-top: .5rem;
+    padding: .5rem;
+}
+
+/*SHOWCASE */
+#showcase2 {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase2 header {
+    display: grid;
+}
+
+#showcase2 header p {
+    text-align: center;
+}
+
+#showcase2 .showcase {
+    display: grid;
+    margin-top: 2rem;
+    width: 65%;
+    min-height: 100vh; 
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#showcase2 .showcase header {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase2 .service-top {
+    display: grid;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+#showcase2 .section-title h1 {
+    text-align: center;
+}
+#showcase2 .service-top p {
+    font-size: 2rem;  
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+    margin: auto;
+    margin-top: 3px;
+    margin-bottom: 3rem;
+}
+
+#showcase2 .showcase h2 {
+    text-align: center;
+}
+
+#showcase2 .showcase .text h2 {
+    font-size: 1.5rem;
+}
+
+#showcase2 .showcase .text p {
+    font-size: 1rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+}
+
+#showcase2 .showcase .video {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#showcase2 .showcase .video iframe {
+    height: 80vh;
+    width: 60vw;
+}
+
+#showcase2 .showcase a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10%;
+    margin: auto;
+    margin-top: .5rem;
+    padding: .5rem;
+}
+
+/*SHOWCASE */
+#showcase3 {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase3 header {
+    display: grid;
+}
+
+#showcase3 header p {
+    text-align: center;
+}
+
+#showcase3 .showcase {
+    display: grid;
+    margin-top: 2rem;
+    width: 65%;
+    min-height: 100vh; 
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#showcase3 .showcase header {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase3 .service-top {
+    display: grid;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+#showcase3 .section-title h1 {
+    text-align: center;
+}
+#showcase3 .service-top p {
+    font-size: 2rem;  
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+    margin: auto;
+    margin-top: 3px;
+    margin-bottom: 3rem;
+}
+
+#showcase3 .showcase h2 {
+    text-align: center;
+}
+
+#showcase3 .showcase .text h2 {
+    font-size: 1.5rem;
+}
+
+#showcase3 .showcase .text p {
+    font-size: 1rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+}
+
+#showcase3 .showcase .video {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#showcase3 .showcase .video iframe {
+    height: 80vh;
+    width: 100vw;
+}
+
+#showcase3 .showcase a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10%;
+    margin: auto;
+    margin-top: .5rem;
+    padding: .5rem;
+}
+
+/*SHOWCASE */
+#showcase4 {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase4 header {
+    display: grid;
+}
+
+#showcase4 header p {
+    text-align: center;
+}
+
+#showcase4 .showcase {
+    display: grid;
+    margin-top: 2rem;
+    width: 65%;
+    min-height: 100vh; 
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#showcase4 .showcase header {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#showcase4 .service-top {
+    display: grid;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+#showcase4 .section-title h1 {
+    text-align: center;
+}
+#showcase4 .service-top p {
+    font-size: 2rem;  
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+    margin: auto;
+    margin-top: 3px;
+    margin-bottom: 3rem;
+}
+
+#showcase4 .showcase h2 {
+    text-align: center;
+}
+
+#showcase4 .showcase .text h2 {
+    font-size: 1.5rem;
+}
+
+#showcase4 .showcase .text p {
+    font-size: 1rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300px;
+    letter-spacing: .05rem;
+}
+
+#showcase4 .showcase .video {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#showcase4 .showcase .video iframe {
+    height: 80vh;
+    width: 100vw;
+}
+
+#showcase4 .showcase a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10%;
+    margin: auto;
+    margin-top: .5rem;
+    padding: .5rem;
+}
+
+
+/*Media queries*/
+
+@media screen and (max-width: 600px) {
+
+    .showcase header {
+        padding: 20px;
+    }
+    .text h2 {
+        font-size: 1.6em;
+    }
+    
+	.text p {
+		display: none;
+	}
+	
+	.social li a {
+		display: inline-block;
+		margin: 0px;
+		transform: scale(.2);
+		transition: 0.5s;
+	}
+	.scial li a:hover {
+		transform: scale(0.2) translateY(-100px);/*lo empuja para arriba*/
+	}
+
+}
+
+@media screen and (max-width: 798px) {
+    .showcase,
+    .showcase header {
+        padding: 40px;
+    }
+    .text h2 {
+        font-size: 3rem;
+    }
+    .text h3 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+	.social li a {
+		width: 100px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: left;
+	    margin-right: 0;	
+ }
+}
